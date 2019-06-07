@@ -1,0 +1,163 @@
+<template>
+    <div class="slds-grid">
+        <!-- Resource Info -->
+        <div if:false={isResourceView} class="slds-col slds-size_1-of-6 slds-p-around_small slds-truncate lwc-resource">
+            <div class="slds-media slds-media_center">
+                <div class="slds-media__figure">
+                    <lightning-icon icon-name="action:user" size="x-small"></lightning-icon>
+                </div>
+                <div class="slds-media__body slds-truncate">
+                    <h3 class="slds-text-body_default">
+                        {resource.Name}
+                    </h3>
+                    <h3 class="slds-text-body_small slds-text-color_weak">
+                        {resource.Default_Role__c}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!-- Resource Info -->
+
+        <!-- Days -->
+        <div class="slds-col slds-is-relative">
+            <!-- Time Slots-->
+            <div class="slds-grid slds-is-absolute lwc-timeslots-container">
+                <template for:each={times} for:item="time" for:index="index">
+                    <div key={time} class={time.class} data-index={index} data-start={time.start} data-end={time.end}
+                        onclick={handleTimeslotClick} ondragenter={handleDragEnter}>
+                        <!-- nothing -->
+                    </div>
+                </template>
+            </div>
+            <!-- /Time Slots-->
+
+            <!-- Allocations -->
+            <div class="lwc-allocations-container">
+                <template for:each={projects} for:item="project" for:index="projectIndex">
+                    <!-- Project Container -->
+                    <div key={project.id} class="slds-is-relative project-container slds-p-around_xx-small">
+                        &nbsp;
+                        <template for:each={project.allocations} for:item="allocation" for:index="allocationIndex">
+                            <!-- Allocation -->
+                            <div key={allocation.Id} class={allocation.Id}>
+                                <div title={allocation.Name} class={allocation.class} style={allocation.style} data-id={allocation.Id}
+                                    data-project={projectIndex} data-allocation={allocationIndex} draggable="true"
+                                    ondragstart={handleDragStart} ondragend={handleDragEnd}>
+                                    <div class="slds-grid slds-grid_vertical-align-center">
+                                        <!-- Allocation Left Handle -->
+                                        <div class="slds-col slds-grow-none slds-col_bump-right lwc-allocation_handle handle_left"
+                                            draggable="true" ondragstart={handleLeftDragStart} data-id={allocation.Id}>
+                                            <lightning-icon icon-name="utility:drag_and_drop" variant="inverse" size="x-small"></lightning-icon>
+                                        </div>
+                                        <!-- /Allocation Left Handle -->
+
+                                        <div class="slds-col slds-grow-none lwc-allocation_actions">
+                                            <lightning-button-icon icon-name="utility:down" variant="bare-inverse" size="small"
+                                                onclick={openAllocationMenu} data-id={allocation.Id}></lightning-button-icon>
+                                        </div>
+                                        <!-- Allocation Right Handle -->
+                                        <div class="slds-col slds-grow-none lwc-allocation_handle handle_right" draggable="true"
+                                            ondragstart={handleRightDragStart} data-id={allocation.Id}>
+                                            <lightning-icon icon-name="utility:drag_and_drop" variant="inverse" size="x-small"></lightning-icon>
+                                        </div>
+                                        <!-- /Allocation Right Handle -->
+                                    </div>
+                                </div>
+                                <div class="slds-truncate slds-is-absolute lwc-allocation-label" style={allocation.labelStyle}>
+                                    <span if:true={allocation.projectName}>
+                                        {allocation.projectName}
+                                    </span>
+                                    <span if:false={allocation.projectName}>
+                                        Unavailable
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- /Allocation -->
+                        </template>
+                    </div>
+                    <!-- /Project Container -->
+                </template>
+                <!-- Extra Space -->
+                <div class="slds-is-relative project-container slds-p-around_xx-small">
+                    &nbsp;
+                </div>
+                <!-- /Extra Space -->
+            </div>
+            <!-- /Allocations -->
+
+            <!-- Allocation Actions-->
+            <div if:true={menuData.show} class="lwc-allocation-actions-container">
+                <div class="slds-dropdown slds-dropdown_left slds-is-absolute" style={menuData.style}>
+                    <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
+                        <li class="slds-dropdown__item" role="presentation" onclick={handleModalEditClick} data-id={menuData.allocationId}>
+                            <a href="javascript:void(0);" role="menuitem" tabindex="0">
+                                <span class="slds-truncate" title="Edit">Edit</span>
+                            </a>
+                        </li>
+                        <li class="slds-dropdown__item" role="presentation" onclick={handleMenuDeleteClick}>
+                            <a href="javascript:void(0);" role="menuitem" tabindex="-1">
+                                <span class="slds-truncate" title="Delete">Delete</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /Allocation Actions-->
+        </div>
+        <!-- /Days -->
+    </div>
+
+    <!-- Add Allocation Modal -->
+    <c-gantt_chart_modal class="add-allocation-modal">
+        <span slot="title">Add Allocation</span>
+        <div slot="body" class="slds-form slds-form_stacked">
+            <!-- Select Project -->
+            <lightning-combobox value={addAllocationData.projectId} label="What Project?" placeholder="-- Select Project --"
+                options={addAllocationData.projects} onchange={handleAddAllocationDataChange} data-field="projectId"></lightning-combobox>
+            <!-- /Select Project -->
+        </div>
+
+        <lightning-button slot="footer" variant="brand" label="Add Allocation" onclick={addAllocationModalSuccess}
+            class="slds-m-left_xx-small" disabled={addAllocationData.disabled}></lightning-button>
+    </c-gantt_chart_modal>
+    <!-- /Add Allocation Modal -->
+
+    <!-- Edit Modal -->
+    <c-gantt_chart_modal class="edit-allocation-modal">
+        <span slot="title">
+            {editAllocationData.resourceName}
+            <span if:true={editAllocationData.isFullEdit}> on {editAllocationData.projectName}</span>
+            <span if:false={editAllocationData.isFullEdit}> (Unavailable)</span>
+        </span>
+        <div slot="body" class="slds-form slds-form_stacked">
+            <!-- Start Date -->
+            <lightning-input type="date" value={editAllocationData.startDate} label="Start Date" onchange={handleEditAllocationDataChange}
+                data-field="startDate"></lightning-input>
+            <!-- /Start Date -->
+            <!-- End Date -->
+            <lightning-input type="date" value={editAllocationData.endDate} label="End Date" onchange={handleEditAllocationDataChange}
+                data-field="endDate"></lightning-input>
+            <!-- /End Date -->
+            <!-- Effort -->
+            <lightning-combobox if:true={editAllocationData.isFullEdit} value={editAllocationData.effort} label="Effort"
+                options={effortOptions} onchange={handleEditAllocationDataChange} data-field="effort"></lightning-combobox>
+            <!-- /Effort -->
+            <!-- Status -->
+            <lightning-combobox if:true={editAllocationData.isFullEdit} value={editAllocationData.status} label="Status"
+                options={statusOptions} onchange={handleEditAllocationDataChange} data-field="status"></lightning-combobox>
+            <!-- /Status -->
+        </div>
+
+        <lightning-button slot="footer" variant="brand" label="Save" onclick={editAllocationModalSuccess} class="slds-m-left_xx-small"
+            disabled={editAllocationData.disabled}></lightning-button>
+    </c-gantt_chart_modal>
+    <!-- /Edit Modal -->
+
+    <c-gantt_chart_modal class="delete-modal">
+        <span slot="title">Confirm Delete</span>
+        <p slot="body">
+            Are you sure you want to remove this allocation?
+        </p>
+        <lightning-button slot="footer" variant="destructive" label="Remove" class="slds-m-left_xx-small" onclick={handleMenuDeleteSuccess}></lightning-button>
+    </c-gantt_chart_modal>
+</template>

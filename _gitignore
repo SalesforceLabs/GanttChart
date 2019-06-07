@@ -1,0 +1,15 @@
+.project
+.settings
+.vscode
+!.vscode/extensions.json
+!.vscode/settings.json
+salesforce.schema
+.sfdx
+node_modules
+ui-tests/screenshots/current
+ui-tests/screenshots/diff
+ui-tests/errors
+ui-tests/node_modules
+ui-tests/logs
+.DS_Store
+coverage

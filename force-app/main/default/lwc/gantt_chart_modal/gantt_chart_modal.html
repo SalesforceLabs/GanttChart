@@ -1,0 +1,33 @@
+<template>
+    <div class="slds-hide lwc-modal" style="height:640px">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1"
+            class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container" style="overscroll-behavior: none;">
+
+                <!-- Modal Header -->
+                <header class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close" size="large" variant="bare-inverse" class="slds-modal__close"
+                        onclick={hide}></lightning-button-icon>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                        <slot name="title"></slot>
+                    </h2>
+                </header>
+                <!-- /Modal Header -->
+
+                <!-- Modal Body -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <slot name="body"></slot>
+                </div>
+                <!-- /Modal Body -->
+
+                <!-- Modal Footer -->
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" label="Cancel" onclick={hide}></lightning-button>
+                    <slot name="footer"></slot>
+                </footer>
+                <!-- /Modal Footer -->
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</template>

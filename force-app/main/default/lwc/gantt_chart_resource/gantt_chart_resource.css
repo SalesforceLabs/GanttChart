@@ -1,0 +1,146 @@
+/*** Containers ***/
+.lwc-allocations-container {
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/****** Allocation Actions Menu ******/
+.lwc-allocations-container ~ .lwc-allocation-actions-container .slds-dropdown {
+    margin-top: 0;
+}
+/****** Allocation Actions Menu ******/
+
+
+/*** Allocations ***/
+.lwc-allocation {
+    background-color: rgba(21, 137, 238);
+    border-radius: .25rem;
+    cursor: grab; 
+    opacity: .85;
+    padding: .25rem;
+    pointer-events: auto;
+    top: 0px;
+}
+
+.lwc-allocation:hover {
+    opacity: .95;
+}
+
+/****** Allocation Status ******/
+.lwc-allocation.hold {
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1) 75%, transparent 75%, transparent);
+    background-size: 64px 64px;
+}
+
+.lwc-allocation.unavailable {
+    background-color: rgb(81, 79, 77);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+    background-size: 64px 64px;
+}
+/****** /Allocation Status ******/
+
+/****** Allocation Efforts ******/
+.lwc-allocation.low-effort {
+    opacity: 0.5;
+}
+
+.lwc-allocation.low-effort:hover {
+    opacity: 0.65;
+}
+
+.lwc-allocation.medium-effort {
+    opacity: 0.75;
+}
+
+.lwc-allocation.medium-effort:hover {
+    opacity: 0.85;
+}
+
+.lwc-allocation.high-effort {
+    opacity: 0.9;
+}
+
+.lwc-allocation.high-effort:hover {
+    opacity: 0.95;
+}
+/****** /Allocation Efforts ******/
+
+.lwc-allocation .lwc-allocation_actions,
+.lwc-allocation .lwc-allocation_handle {
+    opacity: 0;
+}
+
+.lwc-allocation .lwc-allocation_handle {
+    cursor: ew-resize;
+}
+
+.lwc-allocation:hover .lwc-allocation_handle,
+.lwc-allocation:hover .lwc-allocation_actions {
+    opacity: .7;
+}
+
+.lwc-allocation .lwc-allocation_handle:hover,
+.lwc-allocation .lwc-allocation_actions:hover {
+    opacity: 1;
+}
+
+.lwc-allocation .slds-icon_container {
+    margin-bottom: 1px;
+}
+/*** /Allocations ***/
+
+.lwc-allocation-label {
+    color: rgb(255, 255, 255);
+    padding: .25rem;
+    text-align: center;
+    text-overflow: ellipsis;
+    top: 1px;
+}
+
+/*** Resource ***/
+.lwc-resource {
+    border-bottom: 1px solid #dddbda;
+    border-left: 1px solid #dddbda;
+    border-top: 1px solid #dddbda;
+    min-width: 190px;
+}
+/*** /Resource ***/
+
+.lwc-timeslots-container {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+/*** Day View Timeslots ***/
+.lwc-timeslot {
+    border-bottom: 1px solid #dddbda;
+    border-right: 1px solid #dddbda;
+    border-top: 1px solid #dddbda;
+    cursor: pointer;
+    min-width: 50px;
+    transition: background-color 200ms ease 0s;
+}
+
+.lwc-timeslot:first-child {
+    border-left: 3px solid #dddbda;
+}
+
+.lwc-timeslot.lwc-is-week-end, 
+.lwc-timeslot:last-child {
+    border-right: 3px solid #dddbda;
+}
+
+.lwc-timeslot:hover {
+    background-color: rgb(232, 232, 232);
+}
+
+.lwc-timeslot.lwc-is-today {
+    background: rgba(21, 137, 238, 0.1);
+}
+
+.lwc-timeslot.lwc-is-today:hover {
+    background: rgba(21, 137, 238, 0.2);
+}
+/*** Day View Timeslots ***/

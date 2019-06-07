@@ -1,0 +1,57 @@
+.lwc-datepicker {
+    display: inline-block;
+}
+
+.lwc-datepicker .slds-has-error .slds-form-element__help {
+    display: none;
+}
+
+.lwc-chart_container {
+    min-width: 725px;
+}
+
+.lwc-timeline > .slds-col:first-child {
+    min-width: 190px;
+}
+
+.lwc-timeline_day {
+    min-width: 50px;
+    text-align: center;
+    padding-right: 1px;
+}
+
+.lwc-timeline_month-container:first-child .lwc-timeline_day:first-child,
+.lwc-timeline_month-container:only-child .lwc-timeline_day:first-child {
+    border-left: 3px solid #dddbda;
+    
+}
+
+.lwc-timeline_month-container:last-child .lwc-timeline_day:last-child,
+.lwc-timeline_month-container:only-child .lwc-timeline_day:last-child {
+    border-right: 3px solid #dddbda;
+    padding-right: 0;
+}
+
+.lwc-timeline_day.lwc-is-week-end {
+    border-right: 3px solid #dddbda;
+    padding-right: 0;
+
+}
+
+.lwc-timeline_day.lwc-is-today {
+    background: rgba(21, 137, 238, 0.1);
+    border-top: 3px solid #1589ee;
+    margin-top: 3px;
+}
+
+.lwc-timeline_month {
+    border-radius: .25rem;
+}
+
+.slds-form_stacked .slds-form-element > .slds-form-element {
+    margin-bottom: .25rem;
+}
+
+.filter-modal .slds-dropdown[role="listbox"] {
+    max-height: 150px;
+}
