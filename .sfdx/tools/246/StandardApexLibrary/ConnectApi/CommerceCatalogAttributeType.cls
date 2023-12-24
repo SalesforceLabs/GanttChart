@@ -1,0 +1,6 @@
+global enum CommerceCatalogAttributeType {
+CUSTOM,
+PRODUCTATTRIBUTE,
+PRODUCTCATEGORY,
+STANDARD
+}

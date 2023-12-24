@@ -1,0 +1,15 @@
+global class DescribeLayoutItem {
+	global Boolean editablefornew;
+	global Boolean editableforupdate;
+	global String label;
+	global List<QuickAction.DescribeLayoutComponent> layoutcomponents;
+	global Boolean placeholder;
+	global Boolean required;
+	global String getLabel() { }
+	global List<QuickAction.DescribeLayoutComponent> getLayoutComponents() { }
+	global Boolean isEditableForNew() { }
+	global Boolean isEditableForUpdate() { }
+	global Boolean isPlaceholder() { }
+	global Boolean isRequired() { }
+
+}

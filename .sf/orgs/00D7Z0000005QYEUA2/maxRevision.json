@@ -1,0 +1,281 @@
+{
+    "serverMaxRevisionCounter": 315,
+    "sourceMembers": {
+        "CustomField__Allocation__c.Resource__c": {
+            "serverRevisionCounter": 3,
+            "lastRetrievedFromServer": 3,
+            "memberType": "CustomField",
+            "isNameObsolete": false
+        },
+        "CustomField__Allocation__c.Effort__c": {
+            "serverRevisionCounter": 5,
+            "lastRetrievedFromServer": 5,
+            "memberType": "CustomField",
+            "isNameObsolete": false
+        },
+        "CustomField__Allocation__c.End_Date__c": {
+            "serverRevisionCounter": 6,
+            "lastRetrievedFromServer": 6,
+            "memberType": "CustomField",
+            "isNameObsolete": false
+        },
+        "CustomField__Allocation__c.Project__c": {
+            "serverRevisionCounter": 7,
+            "lastRetrievedFromServer": 7,
+            "memberType": "CustomField",
+            "isNameObsolete": false
+        },
+        "CustomField__Allocation__c.Start_Date__c": {
+            "serverRevisionCounter": 9,
+            "lastRetrievedFromServer": 9,
+            "memberType": "CustomField",
+            "isNameObsolete": false
+        },
+        "CustomField__Allocation__c.Status__c": {
+            "serverRevisionCounter": 10,
+            "lastRetrievedFromServer": 10,
+            "memberType": "CustomField",
+            "isNameObsolete": false
+        },
+        "CustomField__Project__c.Active__c": {
+            "serverRevisionCounter": 11,
+            "lastRetrievedFromServer": 11,
+            "memberType": "CustomField",
+            "isNameObsolete": false
+        },
+        "CustomField__Project__c.Color__c": {
+            "serverRevisionCounter": 12,
+            "lastRetrievedFromServer": 12,
+            "memberType": "CustomField",
+            "isNameObsolete": false
+        },
+        "CustomField__Resource__c.Active__c": {
+            "serverRevisionCounter": 13,
+            "lastRetrievedFromServer": 13,
+            "memberType": "CustomField",
+            "isNameObsolete": false
+        },
+        "CustomField__Resource__c.Default_Role__c": {
+            "serverRevisionCounter": 14,
+            "lastRetrievedFromServer": 14,
+            "memberType": "CustomField",
+            "isNameObsolete": false
+        },
+        "Profile__Admin": {
+            "serverRevisionCounter": 48,
+            "lastRetrievedFromServer": 48,
+            "memberType": "Profile",
+            "isNameObsolete": false
+        },
+        "Layout__Allocation__c-Allocation Layout": {
+            "serverRevisionCounter": 39,
+            "lastRetrievedFromServer": 39,
+            "memberType": "Layout",
+            "isNameObsolete": false
+        },
+        "Layout__Resource__c-Resource Layout": {
+            "serverRevisionCounter": 93,
+            "lastRetrievedFromServer": 40,
+            "memberType": "Layout",
+            "isNameObsolete": false
+        },
+        "CustomObject__Allocation__c": {
+            "serverRevisionCounter": 36,
+            "lastRetrievedFromServer": 36,
+            "memberType": "CustomObject",
+            "isNameObsolete": false
+        },
+        "CustomObject__Project__c": {
+            "serverRevisionCounter": 37,
+            "lastRetrievedFromServer": 37,
+            "memberType": "CustomObject",
+            "isNameObsolete": false
+        },
+        "CustomObject__Resource__c": {
+            "serverRevisionCounter": 38,
+            "lastRetrievedFromServer": 38,
+            "memberType": "CustomObject",
+            "isNameObsolete": false
+        },
+        "ApexClass__ganttChart": {
+            "serverRevisionCounter": 15,
+            "lastRetrievedFromServer": 15,
+            "memberType": "ApexClass",
+            "isNameObsolete": false
+        },
+        "ApexClass__tst_ganttChart": {
+            "serverRevisionCounter": 16,
+            "lastRetrievedFromServer": 16,
+            "memberType": "ApexClass",
+            "isNameObsolete": false
+        },
+        "CustomTab__Allocation__c": {
+            "serverRevisionCounter": 43,
+            "lastRetrievedFromServer": 43,
+            "memberType": "CustomTab",
+            "isNameObsolete": false
+        },
+        "CustomTab__Overview": {
+            "serverRevisionCounter": 44,
+            "lastRetrievedFromServer": 44,
+            "memberType": "CustomTab",
+            "isNameObsolete": false
+        },
+        "CustomTab__Project__c": {
+            "serverRevisionCounter": 45,
+            "lastRetrievedFromServer": 45,
+            "memberType": "CustomTab",
+            "isNameObsolete": false
+        },
+        "CustomTab__Resource__c": {
+            "serverRevisionCounter": 46,
+            "lastRetrievedFromServer": 46,
+            "memberType": "CustomTab",
+            "isNameObsolete": false
+        },
+        "CustomApplication__gantt_chart": {
+            "serverRevisionCounter": 47,
+            "lastRetrievedFromServer": 47,
+            "memberType": "CustomApplication",
+            "isNameObsolete": false
+        },
+        "StaticResource__momentJS": {
+            "serverRevisionCounter": 17,
+            "lastRetrievedFromServer": 17,
+            "memberType": "StaticResource",
+            "isNameObsolete": false
+        },
+        "AuraDefinitionBundle__ganttChartWrapper": {
+            "serverRevisionCounter": 34,
+            "lastRetrievedFromServer": 34,
+            "memberType": "AuraDefinitionBundle",
+            "isNameObsolete": false
+        },
+        "AuraDefinition__ganttChartWrapper/ganttChartWrapper.cmp": {
+            "serverRevisionCounter": 35,
+            "lastRetrievedFromServer": 35,
+            "memberType": "AuraDefinition",
+            "isNameObsolete": false
+        },
+        "FlexiPage__Project_Record_Page": {
+            "serverRevisionCounter": 41,
+            "lastRetrievedFromServer": 41,
+            "memberType": "FlexiPage",
+            "isNameObsolete": false
+        },
+        "FlexiPage__Resource_Record_Page": {
+            "serverRevisionCounter": 42,
+            "lastRetrievedFromServer": 42,
+            "memberType": "FlexiPage",
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__gantt_chart": {
+            "serverRevisionCounter": 310,
+            "lastRetrievedFromServer": 310,
+            "memberType": "LightningComponentBundle",
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__gantt_chart_modal": {
+            "serverRevisionCounter": 24,
+            "lastRetrievedFromServer": 24,
+            "memberType": "LightningComponentBundle",
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__gantt_chart_resource": {
+            "serverRevisionCounter": 293,
+            "lastRetrievedFromServer": 293,
+            "memberType": "LightningComponentBundle",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart_resource/gantt_chart_resource.html": {
+            "serverRevisionCounter": 297,
+            "lastRetrievedFromServer": 297,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart_resource/gantt_chart_resource.js-meta.xml": {
+            "serverRevisionCounter": 294,
+            "lastRetrievedFromServer": 294,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart_resource/gantt_chart_resource.js": {
+            "serverRevisionCounter": 295,
+            "lastRetrievedFromServer": 295,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart_resource/gantt_chart_resource.css": {
+            "serverRevisionCounter": 296,
+            "lastRetrievedFromServer": 296,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart/gantt_chart.js-meta.xml": {
+            "serverRevisionCounter": 311,
+            "lastRetrievedFromServer": 311,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart/gantt_chart.js": {
+            "serverRevisionCounter": 312,
+            "lastRetrievedFromServer": 312,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart/__tests__/gantt_chart.test.js": {
+            "serverRevisionCounter": 313,
+            "lastRetrievedFromServer": 313,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart/gantt_chart.css": {
+            "serverRevisionCounter": 314,
+            "lastRetrievedFromServer": 314,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart/gantt_chart.html": {
+            "serverRevisionCounter": 315,
+            "lastRetrievedFromServer": 315,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart_modal/gantt_chart_modal.js-meta.xml": {
+            "serverRevisionCounter": 25,
+            "lastRetrievedFromServer": 25,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart_modal/gantt_chart_modal.css": {
+            "serverRevisionCounter": 26,
+            "lastRetrievedFromServer": 26,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart_modal/gantt_chart_modal.html": {
+            "serverRevisionCounter": 27,
+            "lastRetrievedFromServer": 27,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__gantt_chart_modal/gantt_chart_modal.js": {
+            "serverRevisionCounter": 28,
+            "lastRetrievedFromServer": 28,
+            "memberType": "LightningComponentResource",
+            "isNameObsolete": false
+        },
+        "PermissionSet__Resource_Planner": {
+            "serverRevisionCounter": 54,
+            "lastRetrievedFromServer": null,
+            "memberType": "PermissionSet",
+            "isNameObsolete": false
+        },
+        "Layout__Project__c-Project Layout": {
+            "serverRevisionCounter": 87,
+            "lastRetrievedFromServer": null,
+            "memberType": "Layout",
+            "isNameObsolete": false
+        }
+    }
+}

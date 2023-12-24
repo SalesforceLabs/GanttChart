@@ -1,0 +1,33 @@
+global class Cookie {
+	global Cookie(String name, String value, String path, Integer maxAge, Boolean isSecure, String sameSite) { }
+	global Cookie(String name, String value, String path, Integer maxAge, Boolean isSecure) { }
+	/**
+	 * Get cookie domain
+	 */
+	global String getDomain() { }
+	/**
+	 * Get cookie max age
+	 */
+	global Integer getMaxAge() { }
+	/**
+	 * Get cookie name
+	 */
+	global String getName() { }
+	/**
+	 * Get cookie path
+	 */
+	global String getPath() { }
+	/**
+	 * Get cookie sameSite
+	 */
+	global String getSameSite() { }
+	/**
+	 * Get cookie value
+	 */
+	global String getValue() { }
+	/**
+	 * Is secure cookie
+	 */
+	global Boolean isSecure() { }
+
+}
