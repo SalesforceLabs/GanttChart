@@ -2,7 +2,7 @@ public with sharing class ganttChart {
     @AuraEnabled
     public static Map<String, Object> getChartData(String recordId, String startTime, String endTime, Integer slotSize, List<String> filterProjects, List<String> filterRoles, String filterStatus) {
         Map<String, Object> data = new Map<String, Object>();
-        String query = 'SELECT Resource__c, Resource__r.Name, Resource__r.Active__c, Resource__r.Default_Role__c, Project__c, Project__r.Name, Project__r.Active__c, Project__r.Color__c, Start_Date__c, End_Date__c, Status__c, Effort__c FROM Allocation__c WHERE Start_Date__c <= :endDate AND End_Date__c >= :startDate AND (Project__c = NULL OR Project__r.Active__c = TRUE) AND Resource__r.Active__c = TRUE';
+        String query = 'SELECT Resource__c, Resource__r.Name, Resource__r.Active__c, Resource__r.Default_Role__c, Project__c, Project__r.Name, Project__r.Active__c, Project__r.Color__c, Start_Date__c, End_Date__c,  Start_Time__c, End_Time__c,Status__c, Effort__c FROM Allocation__c WHERE Start_Date__c <= :endDate AND End_Date__c >= :startDate AND (Project__c = NULL OR Project__r.Active__c = TRUE) AND Resource__r.Active__c = TRUE';
         
         List<Allocation__c> allocations = new List<Allocation__c>();
         Map<String, Object> projectById = new Map<String, Object>();
@@ -103,9 +103,22 @@ public with sharing class ganttChart {
 
                 Decimal left = Decimal.valueOf(startDate.daysBetween(allocation.Start_Date__c)) / slotSize;
                 left = left.round(System.RoundingMode.FLOOR);
-                
                 Decimal right = Decimal.valueOf(startDate.daysBetween(allocation.End_Date__c)) / slotSize;
                 right = right.round(System.RoundingMode.FLOOR);
+
+                if (allocation.Start_Time__c != null) {
+                    system.debug('allocation.Start_Time__c: ' + allocation.Start_Time__c);
+                    system.debug(allocation.Start_Time__c.hour());
+                    left = allocation.Start_Time__c.hour();// - 1;
+                }
+
+                if (allocation.End_Time__c != null) {
+                    system.debug('allocation.End_Time__c: ' + allocation.End_Time__c);
+                    system.debug( allocation.End_Time__c.hour());
+                    right = allocation.End_Time__c.hour() - 1;
+                }
+                // System.debug(left);
+                // System.debug(right);
 
                 projectAllocation.add(new Map<String, Object> {
                     'Id' => allocation.Id,

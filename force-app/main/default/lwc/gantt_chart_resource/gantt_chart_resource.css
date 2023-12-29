@@ -119,7 +119,7 @@
     border-right: 1px solid #dddbda;
     border-top: 1px solid #dddbda;
     cursor: pointer;
-    min-width: 50px;
+    min-width: 35px;
     transition: background-color 200ms ease 0s;
 }
 

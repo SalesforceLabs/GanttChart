@@ -24,40 +24,59 @@ export default class GanttChartResource extends LightningElement {
 
   @api
   refreshDates(startDate, endDate, dateIncrement) {
+    // console.log('refreshDates 1');
+    // console.log('refreshDates start date: ', startDate);
+    // console.log('refreshDates end date: ', endDate);
+    // console.log('refreshDates ncrement: ', dateIncrement);
+    this.times = [];
+
     if (startDate && endDate && dateIncrement) {
       let times = [];
       let today = new Date();
       today.setHours(0, 0, 0, 0);
       today = today.getTime();
 
-      for (
-        let date = new Date(startDate);
-        date <= endDate;
-        date.setDate(date.getDate() + dateIncrement)
-      ) {
+      // for (
+      //   let date = new Date(startDate);
+      //   date <= endDate;
+      //   date.setDate(date.getDate() + dateIncrement)
+      // ) {
+      //   console.error('date: ' + date);
+
+      //   let time = {
+      //     class: "slds-col lwc-timeslot",
+      //     start: date.getTime()
+      //   };
+
+      //   if (dateIncrement > 1) {
+      //     let end = new Date(date);
+      //     end.setDate(end.getDate() + dateIncrement - 1);
+      //     time.end = end.getTime();
+      //   } else {
+      //     time.end = date.getTime();
+
+      //     if (times.length % 7 === 6) {
+      //       time.class += " lwc-is-week-end";
+      //     }
+      //   }
+
+      //   if (today >= time.start && today <= time.end) {
+      //     time.class += " lwc-is-today";
+      //   }
+
+      //   times.push(time);
+      // }
+
+      for (let i = 0; i < 24; i++) {
         let time = {
           class: "slds-col lwc-timeslot",
-          start: date.getTime()
+          start: i
         };
-
-        if (dateIncrement > 1) {
-          let end = new Date(date);
-          end.setDate(end.getDate() + dateIncrement - 1);
-          time.end = end.getTime();
-        } else {
-          time.end = date.getTime();
-
-          if (times.length % 7 === 6) {
-            time.class += " lwc-is-week-end";
-          }
-        }
-
-        if (today >= time.start && today <= time.end) {
-          time.class += " lwc-is-today";
-        }
 
         times.push(time);
       }
+      
+      console.warn('refreshDates [5]: ' + JSON.stringify(times));
 
       this.times = times;
       this.startDate = startDate;
@@ -163,6 +182,11 @@ export default class GanttChartResource extends LightningElement {
     }
 
     const totalSlots = this.times.length;
+
+    console.warn('allocation.left: ' + allocation.left);
+    console.warn('allocation.left: ' + allocation.left);
+    console.warn('totalSlots: ' + totalSlots);
+    console.warn('+5: ' + ((totalSlots - (allocation.right + 1)) / totalSlots) * 100 + 5);
     let styles = [
       "left: " + (allocation.left / totalSlots) * 100 + "%",
       "right: " +
@@ -237,15 +261,19 @@ export default class GanttChartResource extends LightningElement {
       };
 
       self.resource.allocationsByProject[projectId].forEach(allocation => {
-        allocation.class = self.calcClass(allocation);
-        allocation.style = self.calcStyle(allocation);
-        allocation.labelStyle = self.calcLabelStyle(allocation);
-
-        project.allocations.push(allocation);
+        console.error('setProjects [1]: ' + JSON.stringify(allocation));
+        project.allocations.push({
+            ...allocation,
+            class: self.calcClass(allocation),
+            style: self.calcStyle(allocation),
+            labelStyle: self.calcLabelStyle(allocation),
+          });
       });
 
       self.projects.push(project);
     });
+
+    console.warn('setProjects [4]: ' + JSON.stringify(self.projects));
   }
 
   handleTimeslotClick(event) {

@@ -34,6 +34,10 @@ export default class GanttChart extends LightningElement {
     // View Select
     options: [
       {
+        label: "View by Day 2",
+        value: "1/24"
+      },
+      {
         label: "View by Day",
         value: "1/14"
       },
@@ -102,6 +106,9 @@ export default class GanttChart extends LightningElement {
       switch (this.defaultView) {
         case "View by Day":
           this.setView("1/14");
+          break;
+        case "View by Day 2":
+          this.setView("1/24");
           break;
         default:
           this.setView("7/10");
@@ -210,7 +217,7 @@ export default class GanttChart extends LightningElement {
 
     // reorder index
     this.dates = Object.values(dates);
-
+    console.warn('setDateHeaders [2] dates: ' + JSON.stringify(this.dates));
     Array.from(
       this.template.querySelectorAll("c-gantt_chart_resource")
     ).forEach(resource => {
@@ -249,12 +256,178 @@ export default class GanttChart extends LightningElement {
     this.view.value = value;
     this.view.slotSize = parseInt(value[0], 10);
     this.view.slots = parseInt(values[1], 10);
+
+    console.warn('setView [1]: slots: ' + this.view.slots +'; slotSize: ' + this.view.slotSize);
   }
 
-  handleViewChange(event) {
+  async handleViewChange(event) {
     this.setView(event.target.value);
-    this.setDateHeaders();
+
+    if (this.view.value === '1/24') {
+      this.dates = [{
+        "dayName":"",
+        "name":"Thu, Jul 21 2023",
+        "days":[
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"0 AM",
+            "start":"2023-12-24T22:00:00.000Z",
+            "end":"2023-12-24T22:01:00.000Z"
+          },
+           {
+              "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+              "label":"1 AM",
+              "start":"2023-12-24T22:01:00.000Z",
+              "end":"2023-12-24T22:02:00.000Z"
+           },
+           {
+              "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+              "label":"2 AM",
+              "start":"2023-12-24T22:03:00.000Z",
+              "end":"2023-12-24T22:03:00.000Z"
+           },
+           {
+              "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+              "label":"3 AM",
+              "start":"2023-12-27T22:00:00.000Z",
+              "end":"2023-12-27T22:00:00.000Z",
+           },
+           {
+              "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+              "label":"4 AM",
+              "start":"2023-12-28T22:00:00.000Z",
+              "end":"2023-12-28T22:00:00.000Z",
+           },
+           {
+              "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+              "label":"5 AM",
+              "start":"2023-12-29T22:00:00.000Z",
+              "end":"2023-12-29T22:00:00.000Z",
+           },
+           {
+              "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+              "label":"6 AM",
+              "start":"2023-12-30T22:00:00.000Z",
+              "end":"2023-12-30T22:00:00.000Z",
+           },
+           {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"7 AM",
+            "start":"2023-12-29T22:00:00.000Z",
+            "end":"2023-12-29T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"8 AM",
+            "start":"2023-12-28T22:00:00.000Z",
+            "end":"2023-12-28T22:00:00.000Z",
+          },
+          {
+          "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+          "label":"9 AM",
+          "start":"2023-12-29T22:00:00.000Z",
+          "end":"2023-12-29T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"10 AM",
+            "start":"2023-12-28T22:00:00.000Z",
+            "end":"2023-12-28T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"11 AM",
+            "start":"2023-12-29T22:00:00.000Z",
+            "end":"2023-12-29T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"12 PM",
+            "start":"2023-12-28T22:00:00.000Z",
+            "end":"2023-12-28T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"1 PM",
+            "start":"2023-12-29T22:00:00.000Z",
+            "end":"2023-12-29T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"2 PM",
+            "start":"2023-12-28T22:00:00.000Z",
+            "end":"2023-12-28T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"3 PM",
+            "start":"2023-12-29T22:00:00.000Z",
+            "end":"2023-12-29T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"4 PM",
+            "start":"2023-12-28T22:00:00.000Z",
+            "end":"2023-12-28T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"5 PM",
+            "start":"2023-12-29T22:00:00.000Z",
+            "end":"2023-12-29T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"6 PM",
+            "start":"2023-12-28T22:00:00.000Z",
+            "end":"2023-12-28T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"7 PM",
+            "start":"2023-12-29T22:00:00.000Z",
+            "end":"2023-12-29T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"8 PM",
+            "start":"2023-12-28T22:00:00.000Z",
+            "end":"2023-12-28T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"9 PM",
+            "start":"2023-12-29T22:00:00.000Z",
+            "end":"2023-12-29T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"10 PM",
+            "start":"2023-12-28T22:00:00.000Z",
+            "end":"2023-12-28T22:00:00.000Z",
+          },
+          {
+            "class":"slds-col slds-p-vertical_x-small slds-m-top_x-small lwc-timeline_day",
+            "label":"11 PM",
+            "start":"2023-12-29T22:00:00.000Z",
+            "end":"2023-12-29T22:00:00.000Z",
+          }
+        ],
+        "style":"width: calc(1/1*100%)"
+     }];
+    } else {
+      this.setDateHeaders();
+    }
+    
     this.handleRefresh();
+
+    if(this.view.value === '1/24') {
+      this.resources = [];
+    } else {
+      // console.log('dates & resources:');
+      // console.log(JSON.stringify(this.dates));
+      // console.log(JSON.stringify(this.resources));
+    }
   }
   /*** /Navigation ***/
 
@@ -621,6 +794,8 @@ export default class GanttChart extends LightningElement {
 
             self.resources.push(newResource);
         });
+
+        console.warn('handleRefresh [3]: ', JSON.stringify(self.resources));
 
         debugger;
     }).catch(error => {
